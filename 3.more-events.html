@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>More Events</title>
+  </head>
+  <body>
+    <!-- Mouse Events -->
+    <input id="user-email" type="text" placeholder="Email" />
+    <button id="btn-mouse">Mouse Click</button>
+    <br />
+    <!-- Keyboard Events -->
+    <input id="user-name" type="text" placeholder="Name" />
+    <button id="btn-keyboard">Key Press</button>
+
+    <script>
+      // Mouse Events
+      document
+        .getElementById("btn-mouse")
+        .addEventListener("mouseenter", function () {
+          console.log("mouse entered");
+        });
+      document
+        .getElementById("btn-mouse")
+        .addEventListener("mouseleave", function () {
+          console.log("mouse leave");
+        });
+
+      // Focus events
+      document
+        .getElementById("user-email")
+        .addEventListener("focus", function () {
+          console.log("user entered in email.");
+        });
+      document
+        .getElementById("user-email")
+        .addEventListener("blur", function () {
+          console.log("user left from email.");
+        });
+
+      // Keyboard Events
+      document
+        .getElementById("user-name")
+        .addEventListener("keyup", function (event) {
+          //keyup will immediate show the result but keydown show the result after next keypress
+          console.log("typing", event);
+          console.log("typing event target", event.target);
+          console.log("typing event target value", event.target.value);
+        });
+    </script>
+  </body>
+</html>
