@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handler</title>
+  </head>
+  <body>
+    <h1 id="h1-title">DOM DE Baba</h1>
+    <button id="btn">Update Title</button>
+    <br />
+    <h2>Get the value from an input field</h2>
+
+    <p id="name">No Name</p>
+    <label for="name-input">First Name:</label>
+    <input id="name-input" type="text" required />
+    <br />
+    <br />
+    <button id="btn-update">Update</button>
+
+    <script>
+      // 1. set eventListener
+      document
+        .getElementById("btn-update")
+        .addEventListener("click", function () {
+          //   console.log("bur");
+          // 2. get the value from input field
+          const nameInput = document.getElementById("name-input");
+          let value = nameInput.value;
+          //   console.log(value);
+          //   3. set the value to the desired element
+          document.getElementById("name").innerText = value;
+        });
+    </script>
+    <script src="./event.js"></script>
+    <script src="./handler.js"></script>
+  </body>
+</html>
