@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Event Summery</title>
+  </head>
+  <body>
+    <!-- 1. -->
+    <input id="name-input" type="text" placeholder="Name" />
+    <button onclick="addName()">Add Name</button>
+    <div id="name-container"></div>
+    <script>
+      function addName() {
+        const nameInput = document.getElementById("name-input");
+
+        let newName = nameInput.value;
+        //parent
+        const nameContainer = document.getElementById("name-container");
+        const p = document.createElement("p");
+        p.innerText = newName;
+
+        nameContainer.appendChild(p);
+        nameInput.value = "";
+      }
+    </script>
+    <br />
+    <!-- 2. using add event listener -->
+    <input type="text" placeholder="Name" id="new-input" />
+    <button id="btn">Add Name</button>
+    <div id="new-name-container"></div>
+
+    <script>
+      document.getElementById("btn").addEventListener("click", function () {
+        const newInput = document.getElementById("new-input");
+        let newInputVal = newInput.value;
+
+        let newNameContainer = document.getElementById("new-name-container");
+        let p = document.createElement("p");
+        p.innerText = newInputVal;
+        newNameContainer.appendChild(p);
+        newInput.value = "";
+
+        // console.log(newInputVal);
+      });
+    </script>
+  </body>
+</html>
