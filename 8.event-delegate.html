@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #definition {
+        font-size: 20px;
+      }
+
+      section ol {
+        font-size: 30px;
+      }
+    </style>
+    <title>Event Delegate</title>
+  </head>
+  <body>
+    <h1>Event Delegate</h1>
+    <p id="definition">
+      (Event Delegation) হলো JavaScript এর একটি কৌশল যা DOM ইভেন্টগুলিকে
+      প্যারেন্ট উপাদান থেকে পরিচালনা করতে সাহায্য করে, যাতে আপনি অনেকগুলো চাইল্ড
+      উপাদানের জন্য একক ইভেন্ট হ্যান্ডলার ব্যবহার করতে পারেন। এর মাধ্যমে, আপনি
+      একাধিক উপাদানে আলাদা আলাদা ইভেন্ট হ্যান্ডলার যোগ করার পরিবর্তে প্যারেন্ট
+      উপাদানে একটিমাত্র ইভেন্ট হ্যান্ডলার ব্যবহার করতে পারেন। এটি ডাইনামিক
+      উপাদানগুলির জন্য খুবই কার্যকর, কারণ নতুন উপাদান যুক্ত হলেও কোনো সমস্যা হয়
+      না।
+    </p>
+
+    <section>
+      <ol id="list-items">
+        <li class="lists">Item list-1</li>
+        <li class="lists">Item list-2</li>
+        <li class="lists">Item list-3</li>
+        <li class="lists">Item list-4</li>
+        <li class="lists">Item list-5</li>
+        <li class="lists">Item list-6</li>
+      </ol>
+      <br />
+      <button id="btn-add">Add Item</button>
+    </section>
+    <script>
+      // removing item using for loop
+      let items = document.getElementsByClassName("lists");
+      for (const item of items) {
+        // console.log(item);
+        item.addEventListener("click", function (event) {
+          //   console.log(event.target);
+          //   console.log(event.target.parentNode);
+          event.target.parentNode.removeChild(event.target); //i.e যে element টা click করব তার parent কে ধরে click করা element কে remove করা।
+        });
+      }
+
+      //adding item in the list
+      let btn = document.getElementById("btn-add");
+      btn.addEventListener("click", function () {
+        let ol = document.getElementById("list-items");
+        let li = document.createElement("li");
+        li.innerText = "Items Added";
+        ol.appendChild(li);
+      });
+    </script>
+  </body>
+</html>
