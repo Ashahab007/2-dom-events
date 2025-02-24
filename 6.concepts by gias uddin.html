@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Concepts by gias uddin</title>
+    <style>
+      #section-container {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+        /* border: 2px solid salmon; */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 4px 6px 10px gainsboro;
+        background: linear-gradient(
+          45deg,
+          #cedbe9 0%,
+          #aac5de 17%,
+          #6199c7 50%,
+          #3a84c3 51%,
+          #419ad6 59%,
+          #4bb8f0 71%,
+          #3a8bc2 84%,
+          #26558b 100%
+        );
+      }
+      #added-items {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      label {
+        font-weight: bold;
+        font-size: larger;
+        display: inline-block;
+        margin-top: 25px;
+      }
+
+      input {
+        height: 25px;
+        width: 50%;
+        margin-top: 15px;
+      }
+
+      button {
+        margin-top: 25px;
+        height: 25px;
+      }
+
+      .purchase-product {
+        width: 200px;
+        margin: 0 auto;
+        padding: 30px;
+        box-shadow: 6px 6px 10px gainsboro;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="section-container">
+      <label>Product Name</label>
+      <br />
+      <input id="product-name" type="text" placeholder="Product Name" />
+      <br />
+      <label>Product Price</label>
+      <br />
+      <input
+        id="product-price"
+        type="number"
+        placeholder="Price"
+        min="0"
+        max="100"
+      />
+      <br />
+      <label>Product Quantity</label>
+      <br />
+
+      <input id="product-quantity" type="number" placeholder="Quantity" />
+      <br />
+      <button id="btn-add-product">Add Item</button>
+    </section>
+    <section id="added-items"></section>
+
+    <script>
+      document
+        .getElementById("btn-add-product")
+        .addEventListener("click", function () {
+          let productName = document.getElementById("product-name").value;
+          let productPrice = document.getElementById("product-price").value;
+          let quantity = document.getElementById("product-quantity").value;
+          //   console.log(productName, productPrice, quantity);
+          let p = document.createElement("p");
+          p.innerHTML = `
+                <section class="purchase-product">
+                  <p> <b> Product Name: </b> ${productName}</p>
+                  <p> <b>Price: </b> ${productPrice}</p>
+                  <p> <b>Quantity: </b> ${quantity}</p>
+                  </section>
+                  `;
+
+          let addedItems = document.getElementById("added-items");
+          addedItems.appendChild(p);
+
+          document.getElementById("product-name").value = "";
+          document.getElementById("product-price").value = "";
+          document.getElementById("product-quantity").value = "";
+        });
+    </script>
+  </body>
+</html>
