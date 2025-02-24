@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #main-container {
+        border: 2px solid green;
+        padding: 15px;
+      }
+
+      #section-container {
+        border: 2px solid red;
+        padding: 15px;
+      }
+
+      #list-items {
+        border: 2px solid purple;
+        padding: 15px;
+      }
+
+      ol li {
+        border: 2px solid yellow;
+        padding: 15px;
+      }
+    </style>
+    <title>Event Bubble</title>
+  </head>
+  <body id="main-container">
+    <h1>Concepts of Event Bubble</h1>
+    <p>Event Bubble ৩ টা stage এ কাজ করে। See the flow chart|</p>
+    <ul>
+      <li>Capture stage</li>
+      <li>Target Stage</li>
+      <li>Bubble stage</li>
+    </ul>
+    <p>
+      Theoritically প্রথমে capturing stage এ টার্গেট element টা খুজে বের করে
+      যেখানে event টা trigger হয়। এরপর টার্গেট element টা capture করে bubbling
+      এর মত উপরে উঠে result show করে। কিন্তু practically capture টা হয় হচ্ছে
+      bubbling stage এ। যার কারনে bubble stage এ যদি অন্য sectoin এ event
+      handler set করা হয় সেটা বোঝা যায়। see the following example with console.
+      এখানে সবগুলো stage এ event handler set করা আছে। যদি item 2 তে click করা হয়
+      তখন target element capture হয় সাথে set করা অন্য section এর event handler
+      এর message গুলো bubbling এর সময় capture হয়ে sequentially result এ output
+      দেখায়।
+    </p>
+    <p>
+      <b>stopPropagation: </b> stopPropagation এর মাধ্যমে function এ event
+      parameter নিয়ে event bubbling stop করা যায়। To see the result commented
+      out the event.stopPropagation()
+    </p>
+    <p>
+      <b>
+        stopImmediatePropagation: see in programminghero milestone 5 module
+        26.7</b
+      >
+    </p>
+    <h1>Event Bubble</h1>
+    <section id="section-container">
+      <h3>List of things</h3>
+      <ol id="list-items">
+        <li id="item-1">List item-1</li>
+        <li id="item-2">List item-2</li>
+        <li id="item-3">List item-3</li>
+        <li id="item-4">List item-4</li>
+        <li id="item-5">List item-5</li>
+        <li id="item-6">List item-6</li>
+      </ol>
+    </section>
+    <br />
+    <section>
+      <img
+        style="width: 50%; height: 500px"
+        src="./eventbubbling.jpg"
+        alt=""
+        srcset=""
+      />
+    </section>
+    <script>
+      document
+        .getElementById("item-2")
+        .addEventListener("click", function (event) {
+          console.log("Item 2 clicked.");
+          //   event.stopPropagation();
+        });
+
+      document
+        .getElementById("list-items")
+        .addEventListener("click", function (event) {
+          console.log("ol clicked.");
+        });
+
+      document
+        .getElementById("section-container")
+        .addEventListener("click", function (event) {
+          console.log("section clicked.");
+        });
+
+      document
+        .getElementById("main-container")
+        .addEventListener("click", function (event) {
+          console.log("body clicked.");
+        });
+    </script>
+  </body>
+</html>
