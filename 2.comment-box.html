@@ -38,6 +38,7 @@
       </p>
     </section>
     <textarea name="" id="input-comment" cols="44" rows="5"></textarea>
+    <br />
     <button id="btn-post">Post</button>
     <script>
       // 1. create the event handler
@@ -57,10 +58,14 @@
           inputCommentEl.innerText = comment;
           inputCommentEl.classList.add("comments"); //added the class name
           //   5. Append the new element to the parent node
-          commentBox.appendChild(inputCommentEl);
-          //   console.log(commentBox);
-          //   6. clean the text area
-          inputComment.value = "";
+          if (comment === "") {
+            return;
+          } else {
+            commentBox.appendChild(inputCommentEl);
+            //   console.log(commentBox);
+            //   6. clean the text area
+            inputComment.value = "";
+          }
         });
     </script>
   </body>

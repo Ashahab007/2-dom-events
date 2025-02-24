@@ -11,10 +11,12 @@ document.getElementById("btn-update").addEventListener("click", function () {
   const nameInput = document.getElementById("name-input");
   let value = nameInput.value;
   console.log(Boolean(value));
+  // condition for blank space
   if (!Boolean(value)) {
     document.getElementById("name").innerText = "Input field empty";
   } else {
     //   3. set the value to the desired element
     document.getElementById("name").innerText = value;
+    nameInput.value = ""; //Clearing the field
   }
 });
